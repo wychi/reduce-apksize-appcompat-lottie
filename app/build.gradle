@@ -1,5 +1,13 @@
 apply plugin: 'com.android.application'
 
+String SDK_DIR = System.getenv("ANDROID_HOME")
+if (SDK_DIR == null) {
+    Properties props = new Properties()
+    props.load(new FileInputStream(project.rootProject.file("local.properties")))
+    SDK_DIR = props.get('sdk.dir');
+}
+String AAPT_BIN = "${SDK_DIR}/build-tools/25.0.2/aapt"
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -14,6 +22,7 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -49,6 +58,27 @@ android {
                 }
             }
         }
+
+        processResTask.doLast {
+            def UNNEDDED_FILE_LIST = "$projectDir/buildconf/UNNEEDED_IMAGE_RESOURCE_FILES.txt"
+            File unneededFileList = new File(UNNEDDED_FILE_LIST)
+            if (unneededFileList.exists()) {
+                unneededFileList.eachLine { line ->
+                    if (!line.startsWith("#") && line.trim()) {
+
+                        Task removeResTask = task("remove-${finalBuildName}-${line}", type: Exec) {
+                            ignoreExitValue true
+                            workingDir "${projectDir}"
+                            println "[LOG] Remove Res ${line} from apk ${processResTask.getPackageOutputFile().absolutePath}"
+                            commandLine "${AAPT_BIN}", "r", "${processResTask.getPackageOutputFile().absolutePath}", "res/${line}"
+                        }
+                        removeResTask.execute()
+                    }
+                }
+            }
+
+        }
+
     }
 }
 
