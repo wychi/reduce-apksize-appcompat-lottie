@@ -17,6 +17,39 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    applicationVariants.all { variant ->
+        String finalBuildName = variant.name.capitalize()
+        def processResTask = tasks.findByName("process${finalBuildName}Resources");
+
+        // NOTE: remove files will cause AAPT fail. (replace instead)
+        // replace unwanted layout before aapt-rules.txt is generated.
+        processResTask.doFirst {
+            def dummyLayout = file("$projectDir/buildconf/dummy_layout.xml");
+            def UNNEDDED_FILE_LIST = "$projectDir/buildconf/UNNEEDED_IMAGE_RESOURCE_FILES.txt"
+            File unneededFileList = new File(UNNEDDED_FILE_LIST)
+            if (unneededFileList.exists()) {
+                unneededFileList.eachLine { line ->
+                    if (!line.startsWith("#") && line.trim()) {
+
+                        def unneededRes = file("${buildDir}/intermediates/res/merged/${variant.flavorName}/${variant.buildType.name}/${line}")
+                        if(!unneededRes.exists()) {
+                            println "mismatch. update UNNEEDED_IMAGE_RESOURCE_FILES accordingly. ${line}"
+                            return
+                        }
+
+                        if(line.endsWith(".xml")) {
+                            def input = dummyLayout.newDataInputStream()
+                            def output = unneededRes.newDataOutputStream()
+                            output << input
+                            input.close()
+                            output.close()
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 dependencies {
