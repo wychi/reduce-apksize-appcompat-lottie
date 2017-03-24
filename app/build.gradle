@@ -13,8 +13,8 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "cms.appcompatmin"
-        minSdkVersion 17
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 17
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -112,18 +112,25 @@ dependencies {
 //    testCompile 'junit:junit:4.12'
 }
 
+
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
-        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.0'
+        //classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.1.16'
+        classpath "gradle.plugin.com.google.gradle:osdetector-gradle-plugin:1.4.0"
+        classpath files('AndResGuard-core.jar')
+        classpath files('AndResGuard-gradle-plugin.jar')
     }
 }
 
 apply plugin: 'AndResGuard'
 andResGuard {
     mappingFile = null //file("./resource_mapping.txt")
-    use7zip = true
-    useSign = true
+    use7zip = false
+    useSign = false
 }
