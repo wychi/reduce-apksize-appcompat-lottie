@@ -1,35 +1,89 @@
-Apk Size Reduction - take appcompat / lottie as example {#h.34ryil71oeas .c21}
+Apk Size Reduction - take appcompat / lottie as example
 -------------------------------------------------------
 
 Download size in KB
 
-+----------------+----------------+----------------+----------------+----------------+
-|                | ApkSize        | dex            | resources.arsc | res            |
-+----------------+----------------+----------------+----------------+----------------+
-| empty app      | 64.3           | 0.35           | 0.53           | 62.3           |
-+----------------+----------------+----------------+----------------+----------------+
-| import         | 435.7          | 167.8          | 49.7           | 222.8          |
-| AppCompat      |                |                |                |                |
-+----------------+----------------+----------------+----------------+----------------+
-| dummy\_layout  | 228.3          | 0.65           | 48.9           | 198.6          |
-+----------------+----------------+----------------+----------------+----------------+
-| aapt - remove  | 113.4          | 0.65           | 48.9           | 63             |
-| res            |                |                |                |                |
-+----------------+----------------+----------------+----------------+----------------+
-| import lottie  | 200.8          | 84.1           | 49.1           | 63.2           |
-+----------------+----------------+----------------+----------------+----------------+
-| resguard       | 196.5          | 84.1           | 40.9           | 63.2           |
-+----------------+----------------+----------------+----------------+----------------+
-| resguard[mod]  | 189.7          | 84.1           | 37.3           | 63.2           |
-+----------------+----------------+----------------+----------------+----------------+
-| remove string  | 173.2          | 84.1           | 18.4           | 63.2           |
-+----------------+----------------+----------------+----------------+----------------+
-| Remove         | 149.2          | 73.5           | 5.7            | 62.4           |
-| AppCompat      |                |                |                |                |
-| Styles         |                |                |                |                |
-+----------------+----------------+----------------+----------------+----------------+
+<table>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<tbody>
+<tr class="odd">
+<td align="left"><p></p></td>
+<td align="left"><p>ApkSize</p></td>
+<td align="left"><p>dex</p></td>
+<td align="left"><p>resources.arsc</p></td>
+<td align="left"><p>res</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>empty app</p></td>
+<td align="left"><p>64.3</p></td>
+<td align="left"><p>0.35</p></td>
+<td align="left"><p>0.53</p></td>
+<td align="left"><p>62.3</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>import AppCompat</p></td>
+<td align="left"><p>435.7</p></td>
+<td align="left"><p>167.8</p></td>
+<td align="left"><p>49.7</p></td>
+<td align="left"><p>222.8</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>dummy_layout</p></td>
+<td align="left"><p>228.3</p></td>
+<td align="left"><p>0.65</p></td>
+<td align="left"><p>48.9</p></td>
+<td align="left"><p>198.6</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>aapt - remove res</p></td>
+<td align="left"><p>113.4</p></td>
+<td align="left"><p>0.65</p></td>
+<td align="left"><p>48.9</p></td>
+<td align="left"><p>63</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>import lottie</p></td>
+<td align="left"><p>200.8</p></td>
+<td align="left"><p>84.1</p></td>
+<td align="left"><p>49.1</p></td>
+<td align="left"><p>63.2</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>resguard</p></td>
+<td align="left"><p>196.5</p></td>
+<td align="left"><p>84.1</p></td>
+<td align="left"><p>40.9</p></td>
+<td align="left"><p>63.2</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>resguard[mod]</p></td>
+<td align="left"><p>189.7</p></td>
+<td align="left"><p>84.1</p></td>
+<td align="left"><p>37.3</p></td>
+<td align="left"><p>63.2</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>remove string</p></td>
+<td align="left"><p>173.2</p></td>
+<td align="left"><p>84.1</p></td>
+<td align="left"><p>18.4</p></td>
+<td align="left"><p>63.2</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Remove AppCompat Styles</p></td>
+<td align="left"><p>149.2</p></td>
+<td align="left"><p>73.5</p></td>
+<td align="left"><p>5.7</p></td>
+<td align="left"><p>62.4</p></td>
+</tr>
+</tbody>
+</table>
 
-Empty App {#h.wl432oyyk99e .c21}
+Empty App
 ---------
 
 proguardFiles
@@ -47,7 +101,7 @@ mapping.txt
 
 ![](images/image14.png)
 
-### import AppComapt-v7 {#h.2ttrfapxxt1p .c5}
+### import AppComapt-v7
 
 ![](images/image05.png)
 
@@ -59,7 +113,7 @@ mapping.txt
 
 ![](images/image01.png)
 
-### dummy\_layout {#h.5boxlaoi4uor .c5}
+### dummy\_layout
 
 ![](images/image08.png)
 
@@ -71,23 +125,23 @@ mapping.txt
 
 ![](images/image14.png)
 
-### aapt - remove res {#h.h8r2z28d2osq .c5}
+### aapt - remove res
 
 ![](images/image13.png)
 
-### import lottie {#h.5302kqrdtpq1 .c5}
+### import lottie
 
-### ![](images/image02.png) {#h.w6hf9cvihqgc .c5}
+### ![](images/image02.png)
 
 ![](images/image12.png)
 
-### ![](images/image00.png) {#h.sdxbg6nkkozc .c5}
+### ![](images/image00.png)
 
-### resguard {#h.fwx73hcapxj .c5}
+### resguard
 
 ![](images/image03.png)
 
-### resguard [mod] - clean entity {#h.11m4qn1aroe5 .c5}
+### resguard [mod] - clean entity
 
 ![](images/image07.png)
 
@@ -97,67 +151,81 @@ mapping.txt
 
 com.tencent.mm.androlib.ApkDecoder\#decode
 
-### Remove Strings {#h.9uiw9urxme3z .c5}
+### Remove Strings
 
 ![](images/image17.png)
 
-### Remove AppCompat - Style/Layout/Drawable reffed by values.xml {#h.9epamc6bz1id .c5}
+### Remove AppCompat - Style/Layout/Drawable reffed by values.xml
 
 ![](images/image11.png)
 
-Reference {#h.rcu49md70rjd .c21}
+Reference
 ---------
 
 gradle tasks
 
-+--------------------------------------+--------------------------------------+
-| Gradle Tasks                         | Comments                             |
-+--------------------------------------+--------------------------------------+
-| :app:generateReleaseResValues        |                                      |
-|                                      |                                      |
-| :app:mergeReleaseResources           |                                      |
-|                                      |                                      |
-| :app:processReleaseManifest          |                                      |
-+--------------------------------------+--------------------------------------+
-|                                      | doFirst                              |
-|                                      |                                      |
-|                                      | replace files (layout/ …)            |
-|                                      |                                      |
-|                                      | modify values.xml to remove styles   |
-+--------------------------------------+--------------------------------------+
-| :app:processReleaseResources         | intermediates: (most of              |
-|                                      | intermediates files are created at   |
-|                                      | this point)                          |
-|                                      |                                      |
-|                                      | output:                              |
-|                                      |                                      |
-|                                      | aapt\_rules.txt                      |
-|                                      |                                      |
-|                                      | resources-release.ap\_               |
-+--------------------------------------+--------------------------------------+
-|                                      | doLast                               |
-|                                      |                                      |
-|                                      | remove PNGs from                     |
-|                                      | resources-release.ap\_               |
-+--------------------------------------+--------------------------------------+
-| :app:transformClassesWithDexForRelea |                                      |
-| se                                   |                                      |
-+--------------------------------------+--------------------------------------+
-| :app:transformClassesWithShrinkResFo |                                      |
-| rRelease                             |                                      |
-+--------------------------------------+--------------------------------------+
-| :app:packageRelease                  |                                      |
-+--------------------------------------+--------------------------------------+
-| :app:assembleRelease                 | output: app-release.apk              |
-+--------------------------------------+--------------------------------------+
-| :app:resguardRelease                 | output:                              |
-|                                      | AndResGuard\_app-release/app-release |
-|                                      | \_signed\_aligned.apk                |
-|                                      |                                      |
-|                                      | rename res/\*                        |
-|                                      |                                      |
-|                                      | remove entity R.drawable.XXX         |
-+--------------------------------------+--------------------------------------+
+<table>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr class="odd">
+<td align="left"><p>Gradle Tasks</p></td>
+<td align="left"><p>Comments</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>:app:generateReleaseResValues</p>
+<p>:app:mergeReleaseResources</p>
+<p>:app:processReleaseManifest</p></td>
+<td align="left"><p></p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p></p></td>
+<td align="left"><p>doFirst</p>
+<p>replace files (layout/ …)</p>
+<p>modify values.xml to remove styles</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>:app:processReleaseResources</p>
+<p></p>
+<p></p>
+<p></p></td>
+<td align="left"><p>intermediates: (most of intermediates files are created at this point)</p>
+<p></p>
+<p>output:</p>
+<p>aapt_rules.txt</p>
+<p>resources-release.ap_</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p></p></td>
+<td align="left"><p>doLast</p>
+<p></p>
+<p>remove PNGs from resources-release.ap_</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>:app:transformClassesWithDexForRelease</p></td>
+<td align="left"><p></p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>:app:transformClassesWithShrinkResForRelease</p></td>
+<td align="left"><p></p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>:app:packageRelease</p></td>
+<td align="left"><p></p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>:app:assembleRelease</p></td>
+<td align="left"><p>output: app-release.apk</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>:app:resguardRelease</p></td>
+<td align="left"><p>output: AndResGuard_app-release/app-release_signed_aligned.apk</p>
+<p></p>
+<p>rename res/*</p>
+<p>remove entity R.drawable.XXX</p></td>
+</tr>
+</tbody>
+</table>
 
 Findings
 
@@ -167,34 +235,38 @@ styles -- ref --\> layout -- affect --\>  proguard (aapt\_rules.txt)
 
 AppCompat
 
-+--------------------------------------------------------------------------+
-| values.xml                                                               |
-|                                                                          |
-| ![Screenshot from 2017-03-23 11:50:07.png](images/image04.png)           |
-|                                                                          |
-| ![Screenshot from 2017-03-23 11:48:19.png](images/image15.png)           |
-+--------------------------------------------------------------------------+
+<table>
+<col width="100%" />
+<tbody>
+<tr class="odd">
+<td align="left"><p>values.xml</p>
+<p></p>
+<p><img src="images/image04.png" alt="Screenshot from 2017-03-23 11:50:07.png" /></p>
+<p></p>
+<p><img src="images/image15.png" alt="Screenshot from 2017-03-23 11:48:19.png" /></p></td>
+</tr>
+</tbody>
+</table>
 
 NOT WORKING (in this case)
 
-+--------------------------------------------------------------------------+
-| [https://developer.android.com/studio/build/shrink-code.html\#keep-resou |
-| rces](https://www.google.com/url?q=https://developer.android.com/studio/ |
-| build/shrink-code.html%23keep-resources&sa=D&ust=1490606924821000&usg=AF |
-| QjCNHAX_bOKREfOoj9VlGbinFsTIiIew)                                        |
-|                                                                          |
-| res/raw/keep.xml                                                         |
-|                                                                          |
-| \<?xml version="1.0" encoding="utf-8"?\>                                 |
-|                                                                          |
-| \<resources xmlns:tools="http://schemas.android.com/tools"               |
-|                                                                          |
-|                                                                          |
-| tools:keep="@layout/l\_used\*\_c,@layout/l\_used\_a,@layout/l\_used\_b\* |
-| "                                                                        |
-|                                                                          |
-|     tools:discard="@layout/unused2" /\>                                  |
-+--------------------------------------------------------------------------+
+<table>
+<col width="100%" />
+<tbody>
+<tr class="odd">
+<td align="left"><p><a href="https://www.google.com/url?q=https://developer.android.com/studio/build/shrink-code.html%23keep-resources&amp;sa=D&amp;ust=1490606924821000&amp;usg=AFQjCNHAX_bOKREfOoj9VlGbinFsTIiIew">https://developer.android.com/studio/build/shrink-code.html#keep-resources</a></p>
+<p></p>
+<p>res/raw/keep.xml</p>
+<p></p>
+<p>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</p>
+<p>&lt;resources xmlns:tools=&quot;http://schemas.android.com/tools&quot;</p>
+<p>    tools:keep=&quot;@layout/l_used*_c,@layout/l_used_a,@layout/l_used_b*&quot;</p>
+<p>    tools:discard=&quot;@layout/unused2&quot; /&gt;</p>
+<p></p>
+<p></p></td>
+</tr>
+</tbody>
+</table>
 
 Remove files directly will cause runtime exceptions
 
@@ -202,33 +274,16 @@ Remove files directly will cause runtime exceptions
 
 aapt commands
 
-+--------------------------------------------------------------------------+
-| Starting process 'command                                                |
-| '/home/wychi/Android/Sdk/build-tools/25.0.2/aapt''. Working directory:   |
-| /home/wychi/repository/AppCompatMin/app Command:                         |
-| /home/wychi/Android/Sdk/build-tools/25.0.2/aapt package -f --no-crunch   |
-| -I /home/wychi/Android/Sdk/platforms/android-25/android.jar -M           |
-| /home/wychi/repository/AppCompatMin/app/build/intermediates/manifests/fu |
-| ll/release/AndroidManifest.xml                                           |
-| -S                                                                       |
-| /home/wychi/repository/AppCompatMin/app/build/intermediates/res/merged/r |
-| elease                                                                   |
-| -m -J                                                                    |
-| /home/wychi/repository/AppCompatMin/app/build/generated/source/r/release |
-| -F                                                                       |
-| /home/wychi/repository/AppCompatMin/app/build/intermediates/res/resource |
-| s-release.ap\_                                                           |
-| -G                                                                       |
-| /home/wychi/repository/AppCompatMin/app/build/intermediates/proguard-rul |
-| es/release/aapt\_rules.txt                                               |
-| --custom-package cms.appcompatmin -0 apk --output-text-symbols           |
-| /home/wychi/repository/AppCompatMin/app/build/intermediates/symbols/rele |
-| ase                                                                      |
-| --no-version-vectors                                                     |
-|                                                                          |
-| Successfully started process 'command                                    |
-| '/home/wychi/Android/Sdk/build-tools/25.0.2/aapt''                       |
-+--------------------------------------------------------------------------+
+<table>
+<col width="100%" />
+<tbody>
+<tr class="odd">
+<td align="left"><p>Starting process 'command '/home/wychi/Android/Sdk/build-tools/25.0.2/aapt''. Working directory: /home/wychi/repository/AppCompatMin/app Command: /home/wychi/Android/Sdk/build-tools/25.0.2/aapt package -f --no-crunch -I /home/wychi/Android/Sdk/platforms/android-25/android.jar -M /home/wychi/repository/AppCompatMin/app/build/intermediates/manifests/full/release/AndroidManifest.xml -S /home/wychi/repository/AppCompatMin/app/build/intermediates/res/merged/release -m -J /home/wychi/repository/AppCompatMin/app/build/generated/source/r/release -F /home/wychi/repository/AppCompatMin/app/build/intermediates/res/resources-release.ap_ -G /home/wychi/repository/AppCompatMin/app/build/intermediates/proguard-rules/release/aapt_rules.txt --custom-package cms.appcompatmin -0 apk --output-text-symbols /home/wychi/repository/AppCompatMin/app/build/intermediates/symbols/release --no-version-vectors</p>
+<p>Successfully started process 'command '/home/wychi/Android/Sdk/build-tools/25.0.2/aapt''</p>
+<p></p></td>
+</tr>
+</tbody>
+</table>
 
 ref
 
@@ -240,8 +295,7 @@ Android gradle plugin
 
 [https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/tasks/](https://www.google.com/url?q=https://android.googlesource.com/platform/tools/build/%2B/master/gradle/src/main/groovy/com/android/build/gradle/tasks/&sa=D&ust=1490606924833000&usg=AFQjCNGvPb7gNtHP6iTmtkbEMp5e1YrJcA)
 
-git clone
-[https://android.googlesource.com/platform/tools/build](https://www.google.com/url?q=https://android.googlesource.com/platform/tools/build&sa=D&ust=1490606924834000&usg=AFQjCNFvbh-BfCMvYrJBk9KVYzQoAjeXqA)
+git clone [https://android.googlesource.com/platform/tools/build](https://www.google.com/url?q=https://android.googlesource.com/platform/tools/build&sa=D&ust=1490606924834000&usg=AFQjCNFvbh-BfCMvYrJBk9KVYzQoAjeXqA)
 
 [https://android.googlesource.com/platform/dalvik/+/a9ac3a9d1f8de71bcdc39d1f4827c04a952a0c29/dx/src/com/android/dx/command/dexer/Main.java?autodive=0](https://www.google.com/url?q=https://android.googlesource.com/platform/dalvik/%2B/a9ac3a9d1f8de71bcdc39d1f4827c04a952a0c29/dx/src/com/android/dx/command/dexer/Main.java?autodive%3D0&sa=D&ust=1490606924835000&usg=AFQjCNEyw3HYcE5qSzTIQKPXorbeQ1w6og)
 
@@ -249,27 +303,25 @@ Proguard
 
 [https://www.guardsquare.com/en/proguard/manual/usage\#keepoptionmodifiers](https://www.google.com/url?q=https://www.guardsquare.com/en/proguard/manual/usage%23keepoptionmodifiers&sa=D&ust=1490606924836000&usg=AFQjCNGqsk269JATWtmTL19jOLKOdf3d7A)
 
-+--------------------------------------------------------------------------+
-| If you specify a class, without class members, ProGuard only preserves   |
-| the class and its parameterless constructor as entry points. It may      |
-| still remove, optimize, or obfuscate its other class members.            |
-|                                                                          |
-| If you specify a method, ProGuard only preserves the method as an entry  |
-| point. Its code may still be optimized and adapted.                      |
-+--------------------------------------------------------------------------+
-| /home/wychi/repository/cmsecurity/build/intermediates/proguard-files/pro |
-| guard-android-optimize.txt-2.3.0                                         |
-|                                                                          |
-| \# Keep setters in Views so that animations can still work.              |
-|                                                                          |
-| -keepclassmembers public class !android.support.v7.\*\* extends          |
-| android.view.View {                                                      |
-|                                                                          |
-|    void set\*(\*\*\*);                                                   |
-|                                                                          |
-|    \*\*\* get\*();                                                       |
-|                                                                          |
-| }                                                                        |
-+--------------------------------------------------------------------------+
+<table>
+<col width="100%" />
+<tbody>
+<tr class="odd">
+<td align="left"><p>If you specify a class, without class members, ProGuard only preserves the class and its parameterless constructor as entry points. It may still remove, optimize, or obfuscate its other class members.</p>
+<p>If you specify a method, ProGuard only preserves the method as an entry point. Its code may still be optimized and adapted.</p>
+<p></p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>/home/wychi/repository/cmsecurity/build/intermediates/proguard-files/proguard-android-optimize.txt-2.3.0</p>
+<p></p>
+<p></p>
+<p># Keep setters in Views so that animations can still work.</p>
+<p>-keepclassmembers public class !android.support.v7.** extends android.view.View {</p>
+<p>   void set*(***);</p>
+<p>   *** get*();</p>
+<p>}</p></td>
+</tr>
+</tbody>
+</table>
 
 
