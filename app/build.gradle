@@ -18,6 +18,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        resConfigs "en"
     }
 
 
@@ -52,6 +54,7 @@ android {
         String finalBuildName = variant.name.capitalize()
         def processResTask = tasks.findByName("process${finalBuildName}Resources");
 
+        // RUN BEFORE AAPT
         // NOTE: remove files will cause AAPT fail. (replace instead)
         // replace unwanted layout before aapt-rules.txt is generated.
         processResTask.doFirst {
@@ -75,8 +78,36 @@ android {
                             input.close()
                             output.close()
                         }
+
+                        // NOTE: delete xml/png files here will cause runtime error
+                        // ex: android.support.v7.widget.AppCompatDrawableManager.COLORFILTER_TINT_COLOR_CONTROL_NORMAL
+//                        if(line.endsWith(".xml")) {
+//                            task("delete${line}", type: Delete) {
+//                                delete file("/home/wychi/repository/AppCompatMin/app/build/intermediates/res/merged/release/${line}")
+//                            }.execute()
+//                        }
                     }
                 }
+            }
+
+            println "modify values"
+            def srcValues = file("${projectDir}/buildconf/values.xml")
+            def dstValues = file("${buildDir}/intermediates/res/merged/${variant.name}/values/values.xml")
+            def input = srcValues.newDataInputStream()
+            def output = dstValues.newDataOutputStream()
+            output << input
+            input.close()
+            output.close()
+
+            def versions = ["hdpi-v4", "large-v4", "night-v8", "v11", "v12", "v14", "v17", "v21", "v22", "v23", "v24", "v25"];
+            srcValues = file("${projectDir}/src/main/res/values/styles.xml")
+            versions.each{ v ->
+                dstValues = file("${buildDir}/intermediates/res/merged/${variant.name}/values-${v}/values-${v}.xml")
+                input = srcValues.newDataInputStream()
+                output = dstValues.newDataOutputStream()
+                output << input
+                input.close()
+                output.close()
             }
         }
 
@@ -132,5 +163,10 @@ apply plugin: 'AndResGuard'
 andResGuard {
     mappingFile = null //file("./resource_mapping.txt")
     use7zip = false
-    useSign = false
+    useSign = true
+    whiteList = [
+            "R.id.*",
+            "R.drawable.*",
+            "R.dimen.*"
+            ]
 }
