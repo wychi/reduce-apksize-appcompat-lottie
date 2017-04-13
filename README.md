@@ -80,6 +80,13 @@ Download size in KB
 <td align="left"><p>5.7</p></td>
 <td align="left"><p>62.4</p></td>
 </tr>
+<tr class="even">
+<td align="left"><p>Remove XML entity</p></td>
+<td align="left"><p>144.9</p></td>
+<td align="left"><p>72.5</p></td>
+<td align="left"><p>2.2</p></td>
+<td align="left"><p>62.4</p></td>
+</tr>
 </tbody>
 </table>
 
